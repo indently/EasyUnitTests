@@ -52,8 +52,4 @@ class EasyUnitTestsTests: XCTestCase {
         
         XCTAssertEqual(actual, expected)
     }
-    
-    
-
-
 }

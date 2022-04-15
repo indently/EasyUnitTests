@@ -8,10 +8,10 @@
 import XCTest
 
 class UsersTests: XCTestCase {
-    var sut: ViewModel!
+    var sut: ModelManager!
 
     override func setUpWithError() throws {
-        sut = ViewModel()
+        sut = ModelManager()
     }
 
     override func tearDownWithError() throws {
@@ -85,5 +85,17 @@ class UsersTests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
     
-
+    func test_usersSorted_returnsAlphabeticallySorted() throws {
+        let mario = User(id: 0, name: "Mario")
+        let luigi = User(id: 1, name: "Luigi")
+        let peach = User(id: 2, name: "Peach")
+        let alex = User(id: 3, name: "Alex")
+        let users = [mario, luigi, peach, alex]
+        
+        let arranged = sut.arrangeUsersByName(users: users)
+        let actual = arranged.map { $0.name }
+        let expected = ["Alex", "Luigi", "Mario", "Peach"]
+        
+        XCTAssertEqual(actual, expected)
+    }
 }

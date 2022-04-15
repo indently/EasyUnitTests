@@ -11,17 +11,18 @@ struct ContentView: View {
     @StateObject private var vm = ViewModel()
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
+            Text("\(vm.convertedText)")
+                .font(.headline)
+            
             TextField("Enter a value.", text: $vm.text)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.decimalPad)
-                .padding()
+                .submitLabel(.done)
             
-            Text("\(vm.convertedText)")
-                .font(.title)
-                .padding()
-            
+            Button("Convert", action: vm.convertMoney)
         }
+        .padding()
     }
 }
 
