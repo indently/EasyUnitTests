@@ -15,6 +15,11 @@ class Converters {
         if euroValue <= 0 {
             return "Please enter a postive number."
         }
+        
+        if euroValue >= 1_000_000 {
+            return "Value is too big to convert!"
+        }
+        
         return "$\(String(format:"%.2f", euroValue * usdRate))"
     }
 }
